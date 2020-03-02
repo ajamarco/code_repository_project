@@ -12,7 +12,9 @@
     <%= f.label :language %><br>
   <%= f.collection_select :language_id, @languages, :id, :name %><br>
   <br>
-
+    <%= f.collection_select(:tag_ids, @tags, :id, :name, {:prompt => "Please Select a tag"}, {:multiple => true}) %>
   <%=f.submit "save new post "%>
 
 <%end%>
+
+<%=link_to "back to posts", posts_path%>

@@ -13,6 +13,7 @@ class PostsController < ApplicationController
     def new 
         @post= Post.new
         @languages = Language.all
+        @tags = Tag.all
     end
 
     def create 
@@ -28,6 +29,6 @@ class PostsController < ApplicationController
     end
 
     def allowed_params 
-        params.require(:post).permit(:title, :description, :content, :language_id)
+        params.require(:post).permit(:title, :description, :content, :language_id, tag_ids:[])
     end
 end
