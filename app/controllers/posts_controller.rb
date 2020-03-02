@@ -11,11 +11,13 @@ class PostsController < ApplicationController
     end
 
     def new 
-        @post.new
+        @post= Post.new
+        @languages = Language.all
     end
 
     def create 
-        @post.create[]
+        @post.create(allowed_params)
+        redirect_to posts_path
     end
 
 
@@ -26,6 +28,6 @@ class PostsController < ApplicationController
     end
 
     def allowed_params 
-        params.require(:post).permit(:title, description:, content:, language:)
+        params.require(:post).permit(:title, :description, :content, :language_id)
     end
 end

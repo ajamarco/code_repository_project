@@ -1,0 +1,18 @@
+<%= form_for @post do |f|%>
+  <%= f.label :title %><br>
+  <%= f.text_field :title %><br>
+  <br>
+    <%= f.label :description %><br>
+  <%= f.text_field :description %><br>
+  <br>
+    <%= f.label :content %><br>
+  <%= f.text_area :content %><br>
+  <br>
+   
+    <%= f.label :language %><br>
+  <%= f.collection_select :language_id, @languages, :id, :name %><br>
+  <br>
+
+  <%=f.submit "save new post "%>
+
+<%end%>
