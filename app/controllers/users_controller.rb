@@ -4,9 +4,7 @@ class UsersController < ApplicationController
     end
   
     def create
-        byebug
       @user = User.create(user_params)
-      byebug
       flash[:error] = "Not valid"
       return redirect_to controller: 'users', action: 'new' unless @user.save
       session[:user_id] = @user.id
