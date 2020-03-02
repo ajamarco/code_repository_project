@@ -1,0 +1,8 @@
+<h1>Title: <%= @post.title%></h1><br>
+<h2>Description: <%= @post.description%></h2><br>
+<h2>Contend: <%= @post.content%></h2><br>
+<h2>Likes: <%= @post.likes%></h2><br>
+<h2>Language: <%= @post.language.name%></h2><br>
+<h2>User: <%= @post.user.name%></h2><br>
+
+<%=link_to "back to posts", posts_path%>

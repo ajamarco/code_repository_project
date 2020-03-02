@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
    
-    before_action :set_post
+    before_action :set_post, only: [:show]
    
    
     def index 
@@ -11,9 +11,11 @@ class PostsController < ApplicationController
     end
 
     def new 
+        @post.new
     end
 
     def create 
+        @post.create[]
     end
 
 
@@ -21,5 +23,9 @@ class PostsController < ApplicationController
 
     def set_post
         @post = Post.find(params[:id])
+    end
+
+    def allowed_params 
+        params.require(:post).permit(:title, description:, content:, language:)
     end
 end
