@@ -1,0 +1,7 @@
+<h1><%=@user.name%></h1>
+<ul>
+<li><%@posts.each do |p|%></li>
+<li><%=link_to p.title, post_path(p)%></li>
+
+</ul>
+<%end%>

@@ -1,0 +1,11 @@
+<ul>
+<%@posts.all.each do |p|%>
+
+<li>Written by: <%= link_to p.user.name, user_path(p.user)%> </li>
+<li><%= link_to p.title, post_path(p)%></li>
+
+<%end%>
+</ul>
+
+<h3><%=link_to "new post", new_post_path%></h3>
+
