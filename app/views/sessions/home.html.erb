@@ -3,8 +3,12 @@
   <input type=submit value='logout'>
 <% end %>
 
-<ul>
-<% Post.all.each do |p|%>
-<%=link_to p.title, p%>
+<%if @posts%>
+  <% @posts.each do |post|%>
+    <p>
+        Title: <%= link_to post.title, post_path(post)%><br>
+    </p>
+    <%end%>
+<%else%>
+  <p>You still don't have any posts</p>
 <%end%>
-</ul>
