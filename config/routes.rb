@@ -10,5 +10,4 @@ Rails.application.routes.draw do
   post '/posts/:id' => 'posts#add_comment'
   root 'sessions#home'
 
-
 end
