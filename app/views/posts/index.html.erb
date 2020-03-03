@@ -4,7 +4,6 @@
 
 <li>Written by: <%= link_to p.user.name, user_path(p.user)%> </li>
 <li><%= link_to p.title, post_path(p)%></li>
-<p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
 <%end%>
 </ul>
