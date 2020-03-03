@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-   
+    before_action :require_logged_in
     before_action :set_post, only: [:show]
    
    
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     end
 
     def create 
-        @post.create(allowed_params)
+        @post = Post.create(allowed_params)
         redirect_to posts_path
     end
 
