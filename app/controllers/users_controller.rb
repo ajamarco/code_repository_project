@@ -1,12 +1,18 @@
 class UsersController < ApplicationController
   before_action :require_logged_in, only: [:index]
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :index]
   
   def new
     @user = User.new
   end
 
   def index
+    if @user.is_admin
+      @users = User.all
+    else
+      redirect_to controller: 'sessions', action: 'home'
+    end
+    
   end
   
   def create
@@ -18,7 +24,8 @@ class UsersController < ApplicationController
   end
 
   def show 
-      @posts = Post.all
+      @user = User.find(params[:id]) #override the set_user method
+      @posts = @user.posts
   end
 
   private  
@@ -27,6 +34,7 @@ class UsersController < ApplicationController
   end
 
   def set_user 
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
+
 end
