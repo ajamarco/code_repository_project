@@ -5,4 +5,11 @@ class Post < ApplicationRecord
     has_many :comments
     belongs_to :user
     belongs_to :language
+
+
+    validates_presence_of :title, :description, :content, :language, :tags
+    validates :title, :length => {minimum: 5}
+    validates :description, :length => {minimum: 20}
+    validates :content, :length => {minimum:20}
 end
+

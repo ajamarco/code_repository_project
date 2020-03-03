@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+    <h1><div class="notice"><%= flash[:notice] %></div></h1>
+  <% end %>
+
+
 <h1>Title: <%= @post.title%></h1><br>
 <h2>Description: <%= @post.description%></h2><br>
 <h2>Contend: <%= @post.content%></h2><br>

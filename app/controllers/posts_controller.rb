@@ -11,15 +11,31 @@ class PostsController < ApplicationController
     end
 
     def new 
-        @post= Post.new
+        @post = Post.new
         @languages = Language.all
         @tags = Tag.all
     end
 
     def create 
-        @post = Post.create(allowed_params)
-        redirect_to posts_path
+        
+        @post = Post.new(allowed_params)
+        @post.user_id = session[:user_id]
+        
+        if @post.save
+           
+        flash[:notice]  =  "post successfully created"
+        redirect_to @post
+        else 
+         
+            @languages = Language.all
+            @tags = Tag.all
+            flash[:errors] = @post.errors.full_messages 
+            render :new
+
+        end
     end
+
+  
 
 
     private 
