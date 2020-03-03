@@ -20,7 +20,7 @@
 
 <% @comments.each do |comment|%>
    <p>
-       user: <%= comment.user_id%> | Created at <%=comment.created_at%>  <br>
+       user: <%= User.find(comment.user_id).name%> | Created on <%=comment.created_at.strftime("%d-%B-%Y  -  %H:%M")%>  <br>
        comment: <%=comment.content%>
    </p>
 <%end%>
