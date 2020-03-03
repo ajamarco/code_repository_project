@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
     def show 
         @comments = @post.comments
-        @user = session[:user_id]
+        @user = User.find(session[:user_id])
     end
 
     def new 
@@ -45,6 +45,12 @@ class PostsController < ApplicationController
             flash[:errors] = @post.errors.full_messages
             redirect_to @post
         end
+    end
+
+    def destroy
+        @post = Post.find(params[:id])
+        @post.destroy
+        redirect_to posts_path
     end
 
 

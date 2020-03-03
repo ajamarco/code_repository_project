@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :index]
   
   def new
+    if logged_in?
+      redirect_to controller: 'sessions', action: 'home'
+    end
     @user = User.new
   end
 

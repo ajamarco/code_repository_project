@@ -12,6 +12,7 @@
   <body>
     <nav>
       <%if !!session[:user_id]%>
+        <p>Logged as: <%=User.find(session[:user_id]).name%>
         <a href="/users">all the users</a> ||
         <a href="/users/new">Create a new User</a> ||
         <a href="/posts/new">Create a new post</a> ||
@@ -19,6 +20,7 @@
         <%=button_to "logout", controller: 'sessions', action: 'destroy', method: :post%>
         <br><br>
       <%end%>
+        </p>
     </nav>
     <%= yield %>
   </body>

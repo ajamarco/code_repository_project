@@ -15,7 +15,7 @@
     <li><%=t.name%></li>
 </ul>
 <%end%>
-<% pre_like = @post.likes.find { |like| like.user_id == @user} %>
+<% pre_like = @post.likes.find { |like| like.user_id == @user.id} %>
 <% if pre_like %>
   <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
 <% else %>
@@ -37,4 +37,8 @@
 <%= form_tag ({controller: 'posts', action: 'add_comment', method: 'post'}) do %>
     <textarea name="comment" id="comment_text_area" cols="30" rows="10"></textarea><br>
   <input type=submit value='add comment'>
-<% end %>
+<% end %><br><br>
+
+<%if (@post.user_id == @user.id) || @user.is_admin%>
+  <%= button_to  "Delete Post", @post, method: :delete %>
+<%end%>
