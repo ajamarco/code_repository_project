@@ -1,11 +1,41 @@
+<% if flash[:errors] %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@article.errors.count, "error") %>
+      prohibited this article from being saved:
+    </h2>
+ 
+    <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <h1>Title: <%= @post.title%></h1><br>
 <h2>Description: <%= @post.description%></h2><br>
 <h2>Contend: <%= @post.content%></h2><br>
 <h2>Likes: <%= @post.likes%></h2><br>
 <h2>Language: <%= @post.language.name%></h2><br>
 <h2>User: <%= link_to @post.user.name, user_path(@post.user)%></h2><br>
-<ul>
 <h2>Tags: <%@post.tags.each do |t|%></h2><br>
-<li><%=t.name%></li>
-<%end%>
+<ul>
+    <li><%=t.name%></li>
 </ul>
+<%end%>
+
+<h1>Comments in the post</h1>
+
+<% @comments.each do |comment|%>
+   <p>
+       user: <%= comment.user_id%> | Created at <%=comment.created_at%>  <br>
+       comment: <%=comment.content%>
+   </p>
+<%end%>
+
+<h1>Write a comment on the post</h1>
+<%= form_tag ({controller: 'posts', action: 'add_comment', method: 'post'}) do %>
+    <textarea name="comment" id="comment_text_area" cols="30" rows="10"></textarea><br>
+  <input type=submit value='add comment'>
+<% end %>

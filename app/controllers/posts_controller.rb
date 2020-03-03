@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     before_action :require_logged_in
-    before_action :set_post, only: [:show]
+    before_action :set_post, only: [:show, :add_comment]
    
    
     def index 
@@ -8,6 +8,7 @@ class PostsController < ApplicationController
     end
 
     def show 
+        @comments = @post.comments
     end
 
     def new 
@@ -19,6 +20,16 @@ class PostsController < ApplicationController
     def create 
         @post = Post.create(allowed_params)
         redirect_to posts_path
+    end
+
+    def add_comment
+        comment = Comment.new(post_id: @post.id, user_id: session[:user_id], content: params[:comment])
+        if comment.save
+            redirect_to @post
+        else
+            flash[:errors] = @post.errors.full_messages
+            redirect_to @post
+        end
     end
 
 
