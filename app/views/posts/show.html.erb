@@ -1,17 +1,8 @@
-<% if flash[:errors] %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@article.errors.count, "error") %>
-      prohibited this article from being saved:
-    </h2>
- 
-    <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
+<%= render 'error'%>
+<% if flash[:notice] %>
+    <h1><div class="notice"><%= flash[:notice] %></div></h1>
 <% end %>
+
 
 <h1>Title: <%= @post.title%></h1><br>
 <h2>Description: <%= @post.description%></h2><br>
