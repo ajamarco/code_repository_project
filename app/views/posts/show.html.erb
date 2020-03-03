@@ -14,6 +14,8 @@
 <ul>
     <li><%=t.name%></li>
 </ul>
+
+ <p><%=link_to "edit this post", edit_post_path(@post)%></p>
 <%end%>
 <% pre_like = @post.likes.find { |like| like.user_id == @user} %>
 <% if pre_like %>

@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     def create 
         # current_user = current_user
         if already_liked? 
-            flash[:notice] = "You can't like more than once"
+           
         else
         @post.likes.create(user_id: current_user.id)
         end

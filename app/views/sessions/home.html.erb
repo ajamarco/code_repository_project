@@ -2,3 +2,9 @@
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='logout'>
 <% end %>
+
+<ul>
+<% Post.all.each do |p|%>
+<%=link_to p.title, p%>
+<%end%>
+</ul>
