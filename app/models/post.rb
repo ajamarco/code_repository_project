@@ -5,7 +5,7 @@ class Post < ApplicationRecord
     has_many :comments
     belongs_to :user
     belongs_to :language
-
+    has_many :likes, dependent: :destroy
 
     validates_presence_of :title, :description, :content, :language, :tags
     validates :title, :length => {minimum: 5}

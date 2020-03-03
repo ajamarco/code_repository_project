@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_170999) do
+ActiveRecord::Schema.define(version: 2020_03_03_120009) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -28,20 +28,19 @@ ActiveRecord::Schema.define(version: 2020_03_02_170999) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "post_likes", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "user_id"
+  create_table "likes", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_post_likes_on_post_id"
-    t.index ["user_id"], name: "index_post_likes_on_user_id"
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.text "content"
-    t.integer "likes", default: 0
     t.integer "language_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -69,9 +68,11 @@ ActiveRecord::Schema.define(version: 2020_03_02_170999) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.boolean "is_admin"
+    t.boolean "is_admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "users"
 end

@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
     def show 
         @comments = @post.comments
+        @user = session[:user_id]
     end
 
     def new 
@@ -51,6 +52,7 @@ class PostsController < ApplicationController
 
     def set_post
         @post = Post.find(params[:id])
+        
     end
 
     def allowed_params 
