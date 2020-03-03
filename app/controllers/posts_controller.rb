@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     before_action :require_logged_in
-    before_action :set_post, only: [:show, :add_comment]
+    before_action :set_post, only: [:show, :add_comment, :edit, :update]
    
    
     def index 
@@ -53,6 +53,17 @@ class PostsController < ApplicationController
         redirect_to posts_path
     end
 
+    def edit 
+
+        @languages = Language.all
+        @tags = Tag.all
+        
+    end
+
+    def update 
+        @post.update(allowed_params)
+        redirect_to @post
+    end
 
     private 
 
