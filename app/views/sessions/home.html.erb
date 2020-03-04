@@ -1,18 +1,19 @@
  
- <header class="">
-  <div class="container">
+
+<header class="">
+  <div class="container pt-3">
     <h1 class="">  <img class="img-love-code" style="height:20rem" src="https://media1.giphy.com/media/QHE5gWI0QjqF2/giphy.gif?cid=790b76116354c66b8416c1d2cd4ace5582fcd90cb92c7fc5&rid=giphy.gif" alt=""></h1>
   </div>
 </header>
 
  
-
+ <div class="container mb-2 btn btn-block ">
       <h1 class="my-4"><h1><br>
       <br>
       Hi, <%= @user.name %></h1>
     
       </h1>
-   <%if @posts%>
+   <%if @posts.size > 0%>
    <h4> your Posts<h4><br>
       <% @posts.each do |post|%>
 
@@ -25,5 +26,6 @@
         </div>
       </div>
    
+    </div>
     </div>
     

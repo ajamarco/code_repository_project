@@ -9,37 +9,66 @@
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+ 
+ <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1E90FF;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #00BFFF;
+}
+</style>
+ 
   </head>
 
   <body>
   <%if !!session[:user_id]%>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">User: <%=User.find(session[:user_id]).name%></a> 
-      
+        <ul>
+           <li class="">
+            <a class="nav-link" href=''>User: <%=User.find(session[:user_id]).name%></a>
+          </li>
 
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+          <li class="">
+            <a class="nav-link" href="/">Home</a>
           </li>
 
           <%if User.find(session[:user_id]).is_admin%>
-          <li class="nav-item active">
+          <li class="">
             <a class="nav-link" href="/users">Show All Users</a>
           </li>
           <%end%>
 
-          <li class="nav-item active">
+          <li class="">
             <a class="nav-link" href="/posts">Show All Posts</a>
           </li>
-          <li class="nav-item active">
-            <%= button_to "Create a New Post", {controller: 'posts', action: 'new'}, {class: 'btn btn-outline-success my-2 my-sm-0'} %>
-            
+          <li class="">
+      
+            <a class="nav-link" href="/posts/new">Create New Post</a>
           </li>
+      
+          </li>
+          <div  class="float-right">
+          <li><%= button_to "logout", {controller: 'sessions', action: "destroy", method: :post}, {class: ' btn btn-primary  my-2 my-sm-0'} %></li>
+          </div>
         </ul>
-          <%= button_to "logout", {controller: 'sessions', action: "destroy", method: :post}, {class: 'btn btn-outline-success my-2 my-sm-0'} %>
-          
-        
+         
       </div>
     </nav>
   <%end%>
