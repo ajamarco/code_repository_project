@@ -1,14 +1,12 @@
 <h1>Hi, <%= @user.name %></h1>
-<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-  <input type=submit value='logout'>
-<% end %>
 
 <%if @posts%>
   <% @posts.each do |post|%>
     <p>
-        Title: <%= link_to post.title, post_path(post)%><br>
+      Title: <%= link_to post.title, post_path(post)%><br>
     </p>
     <%end%>
 <%else%>
   <p>You still don't have any posts</p>
 <%end%>
+

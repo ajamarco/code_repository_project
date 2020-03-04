@@ -1,12 +1,22 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Author</th>
+      <th scope="col">Content</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%@posts.all.each_with_index do |p, i|%>
+    <tr>
+      <th scope="row"><%=i+1%></th>
+      <td><%=p.user.name%></td>
+      <td><%=p.content%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
 
-<ul>
-<%@posts.all.each do |p|%>
-
-<li>Written by: <%= link_to p.user.name, user_path(p.user)%> </li>
-<li><%= link_to p.title, post_path(p)%></li>
-
-<%end%>
-</ul>
 
 <h3><%=link_to "new post", new_post_path%></h3>
 
