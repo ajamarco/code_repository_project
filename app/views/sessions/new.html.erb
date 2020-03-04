@@ -26,11 +26,7 @@
                       <%= f.password_field :password %>
                   </div>
 
-                  <div class="form-label-group">
-                    <%= f.label :password_confirmation %><br>
-                    <br>
-                     <%= f.password_field :password_confirmation %>
-                </div><br>
+        
                 <div >
          <%= button_to "Sign in", {controller: 'sessions', action: "new", method: :post}, {class: "btn-lg btn-primary btn-login 
                 text-uppercase font-weight-bold mb-2"} %> <br>  
