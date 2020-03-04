@@ -1,12 +1,29 @@
-<h1>Hi, <%= @user.name %></h1>
+ 
+ <header class="">
+  <div class="container">
+    <h1 class="">  <img class="img-love-code" style="height:20rem" src="https://media1.giphy.com/media/QHE5gWI0QjqF2/giphy.gif?cid=790b76116354c66b8416c1d2cd4ace5582fcd90cb92c7fc5&rid=giphy.gif" alt=""></h1>
+  </div>
+</header>
 
-<%if @posts%>
-  <% @posts.each do |post|%>
-    <p>
-      Title: <%= link_to post.title, post_path(post)%><br>
-    </p>
+ 
+
+      <h1 class="my-4"><h1><br>
+      <br>
+      Hi, <%= @user.name %></h1>
+    
+      </h1>
+   <%if @posts%>
+   <h4> your Posts<h4><br>
+      <% @posts.each do |post|%>
+
+          <h3><%=  post.title%></h3>
+          <a href=><%= link_to "View the post", post_path(post)%></a><br>
+          <%end%>
+    <%else%>
+     <p>You still don't have any posts</p>
     <%end%>
-<%else%>
-  <p>You still don't have any posts</p>
-<%end%>
-
+        </div>
+      </div>
+   
+    </div>
+    

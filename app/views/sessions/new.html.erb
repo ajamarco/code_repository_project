@@ -1,11 +1,55 @@
-<h2><%=flash[:error] if flash[:error]%></h2>
-<%= form_for @user, url: login_path, method: :post do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
 
-  <%= f.submit "log in" %>
-  Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
-<% end %>
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+             
+               <div class="container mb-2 btn btn-block ">
+               <h2><%=flash[:error] if flash[:error]%></h2>
+                <h3 class="login-heading mb-4">Welcome to Name of the website TBC!</h3>
+                  <%= form_for @user, url: login_path, method: :post do |f| %>
+                  <div class="form-label-group">
+                     <%= f.label :name %>
+                    <br>
+                    <br>
+                   <%= f.text_field :name %>
+                  </div>
+                  
+                  <div class="form-label-group">
+                  <label> <%= f.label :password %></label><br>
+                  <br>
+                      <%= f.password_field :password %>
+                  </div>
+
+                  <div class="form-label-group">
+                    <%= f.label :password_confirmation %><br>
+                    <br>
+                     <%= f.password_field :password_confirmation %>
+                </div><br>
+                <div >
+         <%= button_to "Sign in", {controller: 'sessions', action: "new", method: :post}, {class: "btn-lg btn-primary btn-login 
+                text-uppercase font-weight-bold mb-2"} %> <br>  
+                <div><p>Do not have an account??<p></div>
+                <a href="users/new"><button class= 'btn-lg btn-primary btn-login 
+                text-uppercase font-weight-bold mb-2'> Sign Up </button> </a>
+         
+                </div>
+              <% end %>
+              </div>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

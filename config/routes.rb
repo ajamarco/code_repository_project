@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   resources :posts do 
   resources :likes, only: [:create, :new, :destroy]
   end
+
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
-  post '/posts/:id' => 'posts#add_comment'
+ post '/posts/:id' => 'posts#add_comment'
   root 'sessions#home'
 
 end
