@@ -1,12 +1,44 @@
-<%= form_for @user, controller: 'users', action: 'create' do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+             
+               <div class="container mb-2 btn btn-block ">
+                <h3 class="login-heading mb-4">Welcome to Name of the website TBC!</h3>
+                <%= form_for @user, controller: 'users', action: 'create' do |f| %>
+                  <div class="form-label-group">
+                    <%= f.label :name %><br>
+                    <br>
+                      <%= f.text_field :name %>
+                  </div>
+                  
+                  <div class="form-label-group">
+                  <label> <%= f.label :password %></label><br>
+                  <br>
+                      <%= f.password_field :password %>
+                  </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "create" %>
-<% end %>
+                  <div class="form-label-group">
+                    <%= f.label :password_confirmation %><br>
+                    <br>
+                     <%= f.password_field :password_confirmation %>
+                </div><br>
+                <div >
+         <%= button_to "Sign up", {controller: 'users', action: "create", method: :post}, {class: "btn-lg btn-primary btn-login 
+                text-uppercase font-weight-bold mb-2"} %>
+           
+                </div>
+              <% end %>
+              </div>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
