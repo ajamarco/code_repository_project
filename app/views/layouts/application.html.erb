@@ -33,8 +33,7 @@
             <a class="nav-link" href="/posts">Show All Posts</a>
           </li>
           <li class="nav-item active">
-            <%= button_to "Create a New Post", {controller: 'posts', action: "new", method: :get}, {class: 'btn btn-outline-success my-2 my-sm-0'} %>
-            
+          <a href="/posts/new"><button class='btn btn-outline-success my-2 my-sm-0'>Create New Post </button></a>   
           </li>
         </ul>
           <%= button_to "logout", {controller: 'sessions', action: "destroy", method: :post}, {class: 'btn btn-outline-success my-2 my-sm-0'} %>
