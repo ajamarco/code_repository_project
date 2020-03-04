@@ -4,10 +4,8 @@
     <title>Code Repository</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -24,11 +22,19 @@
           <li class="nav-item active">
             <a class="nav-link" href="#">Home</a>
           </li>
+
+          <%if User.find(session[:user_id]).is_admin%>
+          <li class="nav-item active">
+            <a class="nav-link" href="/users">Show All Users</a>
+          </li>
+          <%end%>
+
           <li class="nav-item active">
             <a class="nav-link" href="/posts">Show All Posts</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/posts/new">Create a New Post</a>
+            <%= button_to "Create a New Post", {controller: 'posts', action: "new", method: :get}, {class: 'btn btn-outline-success my-2 my-sm-0'} %>
+            
           </li>
         </ul>
           <%= button_to "logout", {controller: 'sessions', action: "destroy", method: :post}, {class: 'btn btn-outline-success my-2 my-sm-0'} %>
@@ -39,5 +45,8 @@
   <%end%>
 
     <%= yield %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </body>
 </html>
