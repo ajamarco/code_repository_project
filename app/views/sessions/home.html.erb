@@ -23,7 +23,7 @@
     <%else%>
      <p> You don't have any post</p>
       <div  class="">
-      <%= button_to "new post", {controller: 'posts', action: "new", method: :get}, {class: ' btn btn-primary  my-2 my-sm-0'} %>
+     <a href="/posts/new"> <button type="button" class="btn btn-primary">New post</button></a>
           </div>
     <%end%>
         </div>
