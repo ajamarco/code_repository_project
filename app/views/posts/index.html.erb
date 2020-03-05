@@ -2,18 +2,22 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Author</th>
-      <th scope="col">Title</th>
-      <th scope="col">Content</th>
+      <th scope="col"><%= link_to "Author", posts_path(sort: "author") %></th>
+      <th scope="col"><%= link_to "Title", posts_path(sort: "title") %></th>
+      <th scope="col"><%= link_to "Language", posts_path(sort: "language") %></th>
+      <th scope="col">Tags</th>
+      <th scope="col"><%= link_to "Likes", posts_path(sort: "likes") %></th>
     </tr>
   </thead>
   <tbody>
-  <%@posts.all.each_with_index do |p, i|%>
+  <%@posts.each_with_index do |p, i|%>
     <tr>
       <th scope="row"><%=i+1%></th>
       <td><%=p.user.name%></td>
       <td><%=p.title%></td>
-      <td><%=p.content%></td>
+      <td><%=p.language.name%></td>
+      <td><%=p.show_tags%></td>
+      <td><%=p.likes.count%></td>
     </tr>
     <%end%>
   </tbody>

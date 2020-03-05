@@ -4,7 +4,8 @@ class PostsController < ApplicationController
    
    
     def index 
-        @posts = Post.all
+        @posts = params[:sort] ? Post.order_posts(params[:sort]) : Post.all
+        @tags = Tag.all
     end
 
     def show 
@@ -69,7 +70,6 @@ class PostsController < ApplicationController
 
     def set_post
         @post = Post.find(params[:id])
-        
     end
 
     def allowed_params 
