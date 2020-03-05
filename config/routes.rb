@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   post '/posts/:id' => 'posts#add_comment'
   post '/search/posts' => 'searchs#search_posts'
+  post '/search/user_posts' => 'searchs#search_posts_within_user'
 
 end

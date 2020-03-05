@@ -1,4 +1,13 @@
  
+<% if flash[:errors] %>
+  <div id="error_explanation">
+    <% flash["errors"].each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+    </ul>
+  </div>
+
+<% end %>
 
 <header class="">
   <div class="container pt-3">
@@ -6,7 +15,13 @@
   </div>
 </header>
 
- 
+<div class="container mb-2 btn btn-block ">
+  <%= form_tag ({controller: 'searchs', action: 'search_posts_within_user', method: 'post'}) do %>
+                <input name='title' class="form-control mr-sm-2" type="search" placeholder="Search your posts" aria-label="Search">
+              
+  <% end %>
+</div>
+
  <div class="container mb-2 btn btn-block ">
       <h1 class="my-4"><h1><br>
       <br>

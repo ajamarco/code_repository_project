@@ -65,8 +65,8 @@ li a:hover {
 
           <li>
             <%= form_tag ({controller: 'searchs', action: 'search_posts', method: 'post'}) do %>
-              <input class="form-control mr-sm-2" type="test" placeholder="Search for Posts" aria-label="Search">
-          <% end %>
+              <input name='title' class="form-control mr-sm-2" type="search" placeholder="Search for Posts" aria-label="Search">
+            <% end %>
           </li>
       
           

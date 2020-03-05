@@ -3,6 +3,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Author</th>
+      <th scope="col">Title</th>
       <th scope="col">Content</th>
     </tr>
   </thead>
@@ -11,11 +12,15 @@
     <tr>
       <th scope="row"><%=i+1%></th>
       <td><%=p.user.name%></td>
+      <td><%=p.title%></td>
       <td><%=p.content%></td>
     </tr>
     <%end%>
   </tbody>
 </table>
+<%if @posts.blank?%>
+  <p>No posts to show here</p>
+<%end%>
 
 
 

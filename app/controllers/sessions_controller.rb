@@ -3,7 +3,8 @@ class SessionsController < ApplicationController
   
     def home
         @user = User.find(session[:user_id])
-        @posts = @user.posts    
+        @posts = @user.posts 
+         
     end
     
     def new
