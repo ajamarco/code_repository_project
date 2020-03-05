@@ -38,15 +38,32 @@
                 <h2>Content: <h2><br>
                <div class="content">
               <p> <%= @post.content%></p>
-               <div>
+               </div>
 
-               <% pre_like = @post.likes.find { |like| like.user_id == @user.id} %>
+                  <% pre_like = @post.likes.find { |like| like.user_id == @user.id} %>
                   <% if pre_like %>
-                    <%= button_to '👎', post_like_path(@post, pre_like), method: :delete %>
+                    <%= button_to '👎', post_like_path(@post, pre_like), method: :delete, class:"btn btn-primary mb-2", title:"unlike this post"  %>
+                     <h6><%=@post.likes.count%> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'  %></h6>
                    <% else %>
-                   <%= button_to '👍', post_likes_path(@post), method: :post %>
+                   <%= button_to '👍', post_likes_path(@post), method: :post, class:"btn btn-primary mb-2", title:"like this post" %>
+    
+                    <h6><%=@post.likes.count%> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'  %></h6>
                   <%end%>
 
+                      <br>
+                     <div class="card my-4">
+                      <h5 class="card-header">Leave a Comment:</h5>
+                     <div class="card-body">
+                     <%= form_tag ({controller: 'posts', action: 'add_comment', method: 'post'}) do %>
+                     <div class="form-group">
+                     <textarea name="comment" rows="3" id="comment_text_area" cols="30" rows="10" class="form-control"></textarea><br>
+                     </div>
+                     <input type=submit value='add comment' class="btn btn-primary">
+                       <% end %><br><br>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
             </div>
           </div>
         </div>
@@ -70,14 +87,10 @@
 <%end%>
 
 
-<p><%=@post.likes.count%> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'  %></p>
 
 
-<h1>Write a comment on the post</h1>
-<%= form_tag ({controller: 'posts', action: 'add_comment', method: 'post'}) do %>
-    <textarea name="comment" id="comment_text_area" cols="30" rows="10"></textarea><br>
-  <input type=submit value='add comment'>
-<% end %><br><br>
+
+
 
 <%if (@post.user_id == @user.id) || @user.is_admin%>
   <%= button_to  "Delete Post", @post, method: :delete %>
