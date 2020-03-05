@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
  
  <style>
-ul {
+.bar-list {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -32,9 +32,19 @@ li {
   }
 
 .like-button {
-  
+
 }
 
+.container-show {
+  margin: 2px 100px 75px 40px;
+    border: ;
+    padding: 0px 0px 0px 0px;
+
+}
+
+/* .container-tags {
+ position: float-right;
+} */
 /*  */
 
 li a {
@@ -54,7 +64,7 @@ li a:hover {
 
   <body>
   <%if !!session[:user_id]%>
-        <ul>
+        <ul class="bar-list">
            <li class="">
             <a class="nav-link" href=''>User: <%=User.find(session[:user_id]).name%></a>
           </li>
