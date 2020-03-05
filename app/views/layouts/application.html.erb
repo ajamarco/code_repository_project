@@ -42,7 +42,7 @@ li a:hover {
   <%if !!session[:user_id]%>
         <ul>
            <li class="">
-            <a class="nav-link" href=''>User: <%=User.find(session[:user_id]).name%></a>
+            <a class="nav-link" href='/'>User: <%=User.find(session[:user_id]).name%></a>
           </li>
 
           <li class="">
@@ -62,8 +62,14 @@ li a:hover {
       
             <a class="nav-link" href="/posts/new">Create New Post</a>
           </li>
-      
+
+          <li>
+            <%= form_tag ({controller: 'searchs', action: 'search_posts', method: 'post'}) do %>
+              <input class="form-control mr-sm-2" type="test" placeholder="Search for Posts" aria-label="Search">
+          <% end %>
           </li>
+      
+          
           <div  class="float-right">
           <li><%= button_to "logout", {controller: 'sessions', action: "destroy", method: :post}, {class: ' btn btn-primary  my-2 my-sm-0'} %></li>
           </div>
