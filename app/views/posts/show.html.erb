@@ -3,35 +3,75 @@
     <h1><div class="notice"><%= flash[:notice] %></div></h1>
 <% end %>
 
+        <hr>
 
-<h1>Title: <%= @post.title%></h1><br>
-<h2>Description: <%= @post.description%></h2><br>
-<h2>Content: <%= @post.content%></h2><br>
+        <!-- Preview Image -->
+        <img class="img-fluid rounded" src="https://media1.giphy.com/media/11CXAq0P8h50GI/giphy.gif?cid=790b7611e6e61c57637194e46537903e8b3afdc2dc6ba0a4&rid=giphy.gif" alt="">
+
+        <hr>
+
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+
+        <!-- Title -->
+        <h1 class="mt-4"><%= @post.title%></h1>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="#"><%= link_to @post.user.name, user_path(@post.user)%></a>
+        </p>
+
+      <hr>
+
+        <!-- Date/Time -->
+        <p><%=@post.created_at.strftime("%d-%B-%Y  -  %H:%M")%></p>
+
+        <hr>
+      <!-- Post description -->
+         <h2>description: <br> <h6 class="lead"><%= @post.description%></h6>
+                <hr>
+                <h2>Content: <h2><br>
+               <div class="content">
+              <p> <%= @post.content%></p>
+               <div>
+
+               <% pre_like = @post.likes.find { |like| like.user_id == @user.id} %>
+                  <% if pre_like %>
+                    <%= button_to '👎', post_like_path(@post, pre_like), method: :delete %>
+                   <% else %>
+                   <%= button_to '👍', post_likes_path(@post), method: :post %>
+                  <%end%>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
 
 <h2>Language: <%= @post.language.name%></h2><br>
-<h2>User: <%= link_to @post.user.name, user_path(@post.user)%></h2><br>
+
 <h2>Tags: <%@post.tags.each do |t|%></h2><br>
 <ul>
     <li><%=t.name%></li>
 </ul>
 <%end%>
-<% pre_like = @post.likes.find { |like| like.user_id == @user.id} %>
-<% if pre_like %>
-  <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
-<% else %>
-  <%= button_to 'Like', post_likes_path(@post), method: :post %>
 
-<%end%>
 
 <p><%=@post.likes.count%> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'  %></p>
-<h1>Comments in the post</h1>
 
-<% @comments.each do |comment|%>
-   <p>
-       user: <%= User.find(comment.user_id).name%> | Created on <%=comment.created_at.strftime("%d-%B-%Y  -  %H:%M")%>  <br>
-       comment: <%=comment.content%>
-   </p>
-<%end%>
 
 <h1>Write a comment on the post</h1>
 <%= form_tag ({controller: 'posts', action: 'add_comment', method: 'post'}) do %>
