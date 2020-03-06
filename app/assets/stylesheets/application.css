@@ -8,6 +8,13 @@
     min-height: 100vh;
 }
 
+.bg-image-new {
+    background-image: url('https://media2.giphy.com/media/1yk0v6WtCinP5Ptz6G/giphy.gif?cid=790b76119e851f3b4f96bd40b982f20cba6eabc8beee2efa&rid=giphy.gif');
+    background-size: cover;
+    background-position: center;
+    opacity: 60%;
+}
+
 .bg-image {
     background-image: url('https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fforbestechcouncil%2Ffiles%2F2019%2F01%2Fcanva-photo-editor-8-7.jpg');
     background-size: cover;
