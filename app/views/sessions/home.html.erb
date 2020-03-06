@@ -21,27 +21,29 @@
               
   <% end %>
 </div>
-
- <div class="container mb-2 btn btn-block ">
-      <h1 class="my-4"><h1><br>
-      <br>
+<h1 class="center-title">
       Hi, <%= @user.name %></h1>
-    
       </h1>
-   <%if @posts.size > 0%>
-   <h4> your Posts<h4><br>
-      <% @posts.each do |post|%>
+     
 
+   <%if @posts.size > 0%>
+   <h4 class="center-title"> your Posts<h4>
+   <br>
+   <div class="custom-container">
+      <% @posts.each do |post|%>
+  <div class="grid-item">
           <h3><%=  post.title%></h3>
           <a href=><%= link_to "View the post", post_path(post)%></a><br>
+          </div>
           <%end%>
+          </div>
                 <%else%>
              <p> You don't have any post</p>
                 <div  class="">
      <a href="/posts/new"> <button type="button" class="btn btn-primary">New post</button></a>
           </div>
     <%end%>    
-        </div>
+        
       </div>
    
     </div>

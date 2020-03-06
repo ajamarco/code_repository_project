@@ -33,6 +33,7 @@ class PostsController < ApplicationController
             @languages = Language.all
             @tags = Tag.all
             flash[:errors] = @post.errors.full_messages 
+        
             render :new
 
         end

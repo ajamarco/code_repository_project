@@ -19,24 +19,26 @@
 	    <div class="col-md-8 col-md-offset-2">
 	        		  <%= render 'error'%><br>
                 <br>
+				
         	<h1>Create post</h1>
-    
+			
     	     <%= form_for @post do |f| %> 
 
     		    <div class="form-group has-error">
     		        <label for="slug">Title <span class="require">*</span> <small>(Add a title)</small></label>
-    		        <input type="text" class="form-control" name="post[title]" id="post_title"/>
-    		    
+					<%=f.text_field :title, class:"form-control"%>
     		    </div>
     		 
     		    <div class="form-group">
     		        <label for="title">Description <span class="require">*</span></label>
-    		        <input type="text" class="form-control"name="post[description]" id="post_description" />
+
+					<%=f.text_field :description, class:"form-control"%>
     		    </div>
     		   
     		    <div class="form-group">
     		        <label for="description">Content</label>
-    		        <textarea rows="5" class="form-control" name="post[content]" id="post_content" spellcheck="true"></textarea>
+    		       
+					<%=f.text_area :content, class:"form-control", cols: "30", rows: "10"%>
     		    </div>
     		    
     		    <div class="form-group">

@@ -7,10 +7,10 @@ class Post < ApplicationRecord
     belongs_to :language
     has_many :likes, dependent: :destroy
 
-    validates_presence_of :title, :description, :content, :language, :tags
+    validates_presence_of :title, :content, :language, :tags
     validates :title, :length => {minimum: 5}
-    validates :description, :length => {minimum: 20}
-    validates :content, :length => {minimum:20}
+    validates :description, :length => {minimum: 5}
+    validates :content, :length => {minimum:5}
 
     def show_tags
         return_string = ""

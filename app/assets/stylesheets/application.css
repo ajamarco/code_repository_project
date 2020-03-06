@@ -139,3 +139,25 @@ textarea {
     width: 100px;
     height: 100px;
 }
+
+
+/* */
+
+.center-title {
+    text-align: center;
+}
+
+.custom-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-style: outset;
+}
