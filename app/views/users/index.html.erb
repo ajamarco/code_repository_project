@@ -1,5 +1,18 @@
-<% @users.each do |user|%>
-   <p>
-       Name: <%= link_to user.name, user_path(user)%><br>
-   </p>
-<%end%>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User</th>
+      <th scope="col"># of Posts</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%@users.each_with_index do |u, i|%>
+    <tr>
+      <th scope="row"><%=i+1%></th>
+      <td><%=link_to u.name, user_path(u)%></td>
+      <td><%=u.posts.count%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
