@@ -21,6 +21,18 @@
     background-position: center;
 }
 
+.lead {
+    text-align: left;
+}
+
+.date-post {
+    text-align: right;
+}
+
+.col-lg-8 {
+    text-align: center;
+}
+
 .login-heading {
     font-weight: 300;
 }
