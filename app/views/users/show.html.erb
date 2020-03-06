@@ -1,7 +1,26 @@
-<h1><%=@user.name%></h1>
-<h3>All the posts by this user: </h3>
-<%@posts.each do |p|%>
-    <ul>
-        <li><%=link_to p.title, post_path(p)%></li>
-    </ul>
-<%end%>
+<h1 class="center-title", id=user_name_show_page>
+      User: <%= @user.name %></h1>
+      </h1>
+     
+
+   <%if @posts.size > 0%>
+   <h4 class="center-title">Posts by this user:<h4>
+   <br>
+   <div class="custom-container">
+      <% @posts.each do |post|%>
+  <div class="grid-item">
+          <h3><%=  post.title%></h3>
+          <a href=><%= link_to "View the post", post_path(post)%></a><br>
+          </div>
+          <%end%>
+          </div>
+                <%else%>
+             <p id=no_post_user_page> This user doesn't have any post</p>
+                <div  class="">
+          </div>
+    <%end%>    
+        
+      </div>
+   
+    </div>
+    </div>

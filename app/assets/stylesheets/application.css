@@ -161,3 +161,11 @@ textarea {
     width: 100%;
     border-style: outset;
 }
+
+#user_name_show_page{
+    margin-top: 20px;
+}
+
+#no_post_user_page{
+    text-align: center;
+}
