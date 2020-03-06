@@ -160,6 +160,7 @@ textarea {
     justify-content: center;
     width: 100%;
     border-style: outset;
+    padding: 5rem 0;
 }
 
 #user_name_show_page{
