@@ -9,7 +9,6 @@ class Post < ApplicationRecord
 
     validates_presence_of :title, :content, :language, :tags
     validates :title, :length => {minimum: 5}
-    validates :description, :length => {minimum: 5}
     validates :content, :length => {minimum:5}
 
     def show_tags
