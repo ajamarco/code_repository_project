@@ -1,13 +1,13 @@
  
-<% if flash[:errors] %>
-  <div id="error_explanation">
-    <% flash["errors"].each do |msg| %>
-      <p><%= msg %></p>
-    <% end %>
-    </ul>
-  </div>
+    <% if flash[:errors] %>
+         <div id="error_explanation">
+           <% flash["errors"].each do |msg| %>
+            <p><%= msg %></p>
+            <% end %>
+             </ul>
+               </div>
 
-<% end %>
+                <% end %>
 
 <header class="">
   <div class="container pt-3">
@@ -35,12 +35,12 @@
           <h3><%=  post.title%></h3>
           <a href=><%= link_to "View the post", post_path(post)%></a><br>
           <%end%>
-    <%else%>
-     <p> You don't have any post</p>
-      <div  class="">
+                <%else%>
+             <p> You don't have any post</p>
+                <div  class="">
      <a href="/posts/new"> <button type="button" class="btn btn-primary">New post</button></a>
           </div>
-    <%end%>
+    <%end%>    
         </div>
       </div>
    
