@@ -5,32 +5,42 @@
   <h1><div class="notice"><%= flash[:notice] %></div></h1>
 <% end %>
 
+
 <div class="container-show">
    <%# <div class="row"> %>
    <!-- Post Content Column -->
-      <div class="col-lg-8">
+      <div class="col-lg-8 ">
             <!-- Title -->
             <h1><%= @post.title%></h1>
+            <div class="date-post">
+                          <p><%=@post.created_at.strftime("%d-%B-%Y  -  %H:%M")%></p>
+                        </div>
              <!-- Author -->
-               <p class="lead">
-                  by
-                    <strong> <%= link_to @post.user.name, user_path(@post.user)%></strong>  </p>
-                        <p class="lead">
+               <div class="lead">
+                  by:
+                    <strong> <%= link_to @post.user.name, user_path(@post.user)%></strong>  
+                    </div><br>
+                    
+                        <div class="lead">
                            Language: 
-                             <strong><%= @post.language.name%></strong>
-                               </p>
+                             <strong><%= @post.language.name%></strong><br>
+                          
+                               </div>
                                   <hr>
                                   <!-- tags--->
                                       <p class="lead">
                                           Tags:
                                            <a href="#"><%=@post.show_tags %> </a>
-                                               <hr>
-                                              <!-- Date/Time -->
-                                             <p><%=@post.created_at.strftime("%d-%B-%Y  -  %H:%M")%></p>
+
 
                                                <hr>
+                                               <div class="lead">
+                                              
+
+                                         
                                                 <!-- Post description -->
                                                    <h2>description: <br> <h6 class="lead"><%= @post.description%></h6>
+                                                   
                                                      <hr>
                                                          <h2>Content: <h2><br>
                                                               <div>
@@ -39,6 +49,7 @@
                                                                  <% pre_like = @post.likes.find { |like| like.user_id == @user.id} %>
                                                                   <% if pre_like %>
                                                                     <%= button_to '👎', post_like_path(@post, pre_like), method: :delete, class:"btn btn-primary mb-2", title:"unlike this post"  %>
+                                                                      </div>
                                                                        <h6><%=@post.likes.count%> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'  %></h6>
                                                                          <% else %>
                                                                              <%= button_to '👍', post_likes_path(@post), method: :post, class:"btn btn-primary mb-2", title:"like this post" %>                                       
@@ -51,7 +62,7 @@
                                                                               <%end%>
 
                                             <br>
-          <div class="card my-4">
+       
             <h5 class="card-header">Leave a Comment:</h5>
               <div class="card-body">
                  <%= form_tag ({controller: 'posts', action: 'add_comment', method: 'post'}) do %>
@@ -66,10 +77,12 @@
                                               </div>
                   <div class="media mb-4">
                     <img class="d-flex mr-3 rounded-circle" src="" alt="">
-                         <div class="media-body">                                        
+                         <div class="media-body"> 
+                        <h1> Comments:</h1>                                      
                             <%@post.comments.each do |c|%>
-                                <h4><%=c.user.name%></h4>
-                                    <p><%=c.content%></p>
+                                <h4><%= link_to "#{c.user.name}", user_path(c.user) %></h4> <%= "#{c.created_at.strftime("%d-%B-%Y  -  %H:%M")}"%><br>
+                                    <p><%=c.content%></p><br>
+                                   
                                        <br>
                                          <%end%>
                                               </div>
