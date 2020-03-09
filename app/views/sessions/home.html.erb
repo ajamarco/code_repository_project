@@ -1,52 +1,51 @@
- 
-    <% if flash[:errors] %>
-         <div id="error_explanation">
-           <% flash["errors"].each do |msg| %>
-            <p><%= msg %></p>
+<% if flash[:errors] %>
+    <div id="error_explanation">
+        <% flash["errors"].each do |msg| %>
+            <p>
+                <%= msg %>
+            </p>
             <% end %>
-             </ul>
-               </div>
-
-                <% end %>
-
-<header class="">
-  <div class="container pt-3">
-    <h1 class="">  <img class="img-love-code" style="height:20rem" src="https://media1.giphy.com/media/QHE5gWI0QjqF2/giphy.gif?cid=790b76116354c66b8416c1d2cd4ace5582fcd90cb92c7fc5&rid=giphy.gif" alt=""></h1>
-  </div>
-</header>
-
-<div class="container mb-2 btn btn-block ">
-  <%= form_tag ({controller: 'searchs', action: 'search_posts_within_user', method: 'post'}) do %>
+                </ul>
+    </div>
+    <% end %>
+        <header class="">
+            <div class="container pt-3">
+                <h1 class=""> <img class="img-love-code" style="height:20rem" src="https://media1.giphy.com/media/QHE5gWI0QjqF2/giphy.gif?cid=790b76116354c66b8416c1d2cd4ace5582fcd90cb92c7fc5&rid=giphy.gif" alt=""></h1>
+            </div>
+        </header>
+        <div class="container mb-2 btn btn-block ">
+            <%= form_tag ({controller: 'searchs', action: 'search_posts_within_user', method: 'post'}) do %>
                 <input name='title' class="form-control mr-sm-2" type="search" placeholder="Search your posts" aria-label="Search">
-              
-  <% end %>
-</div>
-<h1 class="center-title">
-      Hi, <%= @user.name %></h1>
-      </h1>
-     
-
-   <%if @posts.size > 0%>
-   <h4 class="center-title"> your Posts<h4>
-   <br>
-   <div class="custom-container">
-      <% @posts.each do |post|%>
-  <div class="grid-item">
-          <h3><%=  post.title%></h3>
-          <a href=><%= link_to "View the post", post_path(post)%></a><br>
-          </div>
-          <%end%>
-          </div>
-                <%else%>
-                <div  class="center-title pt-5">
-             <p> You don't have any post</p>
-                
-     <a href="/posts/new"> <button type="button" class="btn btn-primary">Create post</button></a>
-       </div>
-    <%end%>    
-        
-      </div>
-   
-    </div>
-    </div>
-    
+                <% end %>
+        </div>
+        <h1 class="center-title">
+            Hi,
+            <%= @user.name %>
+        </h1>
+        </h1>
+        <%if @posts.size > 0%>
+            <h4 class="center-title">
+                your Posts
+                <h4>
+                    <br>
+                    <div class="custom-container">
+                        <% @posts.each do |post|%>
+                            <div class="grid-item">
+                                <h3>
+                                    <%=  post.title%>
+                                </h3>
+                                <a href=>
+                                    <%= link_to "View the post", post_path(post)%>
+                                </a><br>
+                            </div>
+                            <%end%>
+                    </div>
+                    <%else%>
+                        <div class="center-title pt-5">
+                            <p> You don't have any post</p>
+                            <a href="/posts/new"> <button type="button" class="btn btn-primary">Create post</button></a>
+                        </div>
+                        <%end%>
+                            </div>
+                            </div>
+                            </div>

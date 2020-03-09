@@ -23,9 +23,10 @@ class PostsController < ApplicationController
         
         @post = Post.new(allowed_params)
         @post.user_id = session[:user_id]
+         @post.tags.build(name: "add tag")
         
         if @post.save
-           
+        
         flash[:notice]  =  "post successfully created"
         redirect_to @post
         else 
@@ -74,6 +75,6 @@ class PostsController < ApplicationController
     end
 
     def allowed_params 
-        params.require(:post).permit(:title, :description, :content, :language_id, tag_ids:[])
+        params.require(:post).permit(:title, :description, :content, :language_id, tag_ids:[], tags_attributes:[:name])
     end
 end

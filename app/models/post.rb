@@ -6,6 +6,7 @@ class Post < ApplicationRecord
     belongs_to :user
     belongs_to :language
     has_many :likes, dependent: :destroy
+    accepts_nested_attributes_for :tags
 
     validates_presence_of :title, :content, :language, :tags
     validates :title, :length => {minimum: 5}

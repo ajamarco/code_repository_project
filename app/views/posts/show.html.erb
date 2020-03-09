@@ -59,6 +59,7 @@
 
                                                                               <%if (@post.user_id == @user.id) || @user.is_admin%>
                                                                                 <%= button_to  "Delete Post", @post, method: :delete, class:"btn btn-primary mb-2", title:"delete this post",data: {confirm: "Are you sure you want to delete this post?"} %>
+                                                                                 <%= button_to  "Edit", edit_post_path(@post), method: :get, class:"btn btn-primary mb-2", title:"like this post"   %>
                                                                               <%end%>
 
                                             <br>

@@ -11,7 +11,7 @@
              
                <div class="container mb-2 btn btn-block ">
                <h2><%=flash[:error] if flash[:error]%></h2>
-                <h3 class="login-heading mb-4">Welcome to Name of the website TBC!</h3>
+                <h3 class="login-heading mb-4">Welcome to Code Pad</h3>
                   <%= form_for @user, url: login_path, method: :post do |f| %>
                   <div class="form-label-group">
                      <%= f.label :name %>
